@@ -9,8 +9,15 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
       <%= link_to "Home", root_path, class: "nav-item nav-link" %>
-      <%= link_to "Login", login_path, class: "nav-item nav-link" %>
-      <%= link_to "Register", signup_path, class: "nav-item nav-link" %>
+      <% if user_signed_in? %>
+        <%= link_to "My Cats", root_path, class: "nav-item nav-link" %>
+        <%= link_to "Cat Feed", root_path, class: "nav-item nav-link" %>
+        <%= link_to "My Profile", root_path, class: "nav-item nav-link" %>
+        <%= link_to "Logout", signout_path, class: "nav-item nav-link" %>
+      <% else %>
+        <%= link_to "Login", login_path, class: "nav-item nav-link" %>
+        <%= link_to "Register", signup_path, class: "nav-item nav-link" %>
+      <% end %>
     </div>
   </div>
 </nav>
