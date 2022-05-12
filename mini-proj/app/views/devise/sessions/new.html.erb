@@ -1,42 +1,10 @@
 <% provide(:title, "Login") %>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-
-            <div class="card text-center" , style="border-radius: 15px">
-
-                <div class="card-body">
-
-                    <h2>Login</h2>
-
-                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                    <div class="form-group text-left">
-                        <%= f.label :email %><br />
-                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-                    </div>
-
-                    <div class="form-group text-left">
-                        <%= f.label :password %><br />
-                        <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
-                        <%= link_to "Forgot your password?", new_password_path(resource_name), class: "form-text text-right", style: "display: none" %>
-                    </div>
-
-                    <% if devise_mapping.rememberable? %>
-                        <div class="form-check text-left">
-                        <%= f.check_box :remember_me, class: "form-check-input", id: "remember-check" %>
-                        <%= f.label :remember_me, class: "form-check-label", for: "remember-check" %>
-                        </div>
-                    <% end %>
-
-                    <div class="actions">
-                        <%= f.submit "Log in", class: "btn", style: "background-color: #EF9273; color: white;" %>
-                    </div>
-                    <% end %>
-
-                    <%= render "devise/shared/links" %>
-
-                </div>
+<div class="row justify-content-center">
+    <div class="col-sm-5" style="margin-top: 10vh;">
+        <div class="card text-center" style="border-radius: 15px">
+            <div class="card-body">
+                <%= render 'form' %>
             </div>
         </div>
     </div>
