@@ -7,4 +7,9 @@ class Cat < ApplicationRecord
 
     has_many :tags, dependent: :destroy
     has_many :traits, through: :tags, source: :trait 
+
+    validates :name, presence: true
+    validates :gender, presence: true, inclusion: %w(male female)
+    validates :birthday, presence: true 
+    validates :description, presence: true
 end

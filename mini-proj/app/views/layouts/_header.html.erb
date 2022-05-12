@@ -14,7 +14,7 @@
       <% if user_signed_in? %>
         <%= link_to "My Cats", root_path, class: "nav-item nav-link" %>
         <%= link_to "Cat Feed", root_path, class: "nav-item nav-link" %>
-        <%= link_to "My Profile", current_user, class: "nav-item nav-link" %>
+        <%= link_to "My Profile", user_path(current_user), class: "nav-item nav-link" %>
 
         <% if current_user.admin? %>
         <li class="nav-item dropdown">

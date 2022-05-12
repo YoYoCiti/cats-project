@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cats/new'
+
   root 'static_pages#home'
 
   devise_for :users, :controllers => { :registrations => :registrations }
@@ -10,5 +12,6 @@ Rails.application.routes.draw do
   end
   
   resources :users
+  resources :cats
 
 end
