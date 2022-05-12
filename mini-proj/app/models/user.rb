@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
 
   has_many :cats, through: :subscriptions, source: :cat
+
+  def admin? 
+    type == 'Admin'
+  end
 end
