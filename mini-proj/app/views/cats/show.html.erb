@@ -6,11 +6,11 @@
             <div class="card-body">
                 <h5 class="card-title"><%= @cat.name %></h5>
                 <div class="row">
-                    <div class="col-sm-2">
-                        <p><%= @cat.gender.humanize %></p>
-                    </div>
                     <div class="col-sm-3">
-                        <p><%= @cat.birthday %></p>
+                        <p><%= fa_icon gender_icon(@cat.gender) %> <%= @cat.gender.humanize %></p>
+                    </div>
+                    <div class="col-sm-5">
+                        <p><%= fa_icon "birthday-cake" %> <%= @cat.birthday %></p>
                     </div>
                 </div>
                 <p class="card-text"><%= @cat.description %></p>

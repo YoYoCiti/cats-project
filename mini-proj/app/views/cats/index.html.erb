@@ -1,35 +1,42 @@
 <%= provide(:title, "All Cats") %>
 
-<h1>All Cats</h1>
-<%= link_to "Add Cat", new_cat_path ,class: "btn", style: "background-color: #EF9273; color: white;" %>
-
-<table class="table table-striped table-bordered" style="width:100%">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Birthday</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @cats.each do |cat| %>
-            <td><%= cat.name %></td>
-            <td><%= cat.gender.humanize %></td>
-            <td><%= cat.birthday %></td>
-            <td>
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" style="background-color:transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Actions
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <%= link_to "View", cat, class: "dropdown-item" %>
-                        <%= link_to "Unsubscribe", '#', class: "dropdown-item" %>
-                        <%= link_to "Edit", edit_cat_path(cat), class: "dropdown-item" %>
-                        <%= link_to "Delete", cat, method: :delete, data: { confirm: "Confirm delete?" }, class: "dropdown-item" %>
+<div class="row">
+    <h1>All Cats</h1>
+</div>
+<div class="row" style="padding: 15px; padding-left: 0;">
+    <%= link_to "Add Cat", new_cat_path ,class: "btn", style: "background-color: #EF9273; color: white;" %>
+</div>
+<div class="row">
+    <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @cats.each do |cat| %>
+            <tr>
+                <td><%= cat.name %></td>
+                <td><%= cat.gender.humanize %></td>
+                <td><%= cat.birthday %></td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" style="background-color:transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            View
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <%= link_to "View", cat, class: "dropdown-item" %>
+                            <%= link_to "Unsubscribe", '#', class: "dropdown-item" %>
+                            <%= link_to "Edit", edit_cat_path(cat), class: "dropdown-item" %>
+                            <%= link_to "Delete", cat, method: :delete, data: { confirm: "Confirm delete?" }, class: "dropdown-item" %>
+                        </div>
                     </div>
-                </div>
-            </td>
-        <% end %>
-    </tbody>
-</table>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
