@@ -1,2 +1,11 @@
-<h1>Cats#new</h1>
-<p>This is a form to add new cat</p>
+<%= provide(:title, "Add Cat") %>
+
+<div class="row justify-content-center">
+    <div class="col-sm-8" style="margin-top: 10vh;">
+        <div class="card text-center" style="border-radius: 15px">
+            <div class="card-body">
+                <%= render 'form' %>
+            </div>
+        </div>
+    </div>
+</div>

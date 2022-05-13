@@ -1,0 +1,48 @@
+
+
+<h2>Add Cat</h2>
+
+<%= form_for(@cat) do |f| %>
+    <%= render "shared/error_messages", object: f.object%>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group text-left">
+                <%= f.label :name %><br/>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+            </div>
+
+            <div class="form-group text-left">
+                <%= f.label :gender %><br/>
+                <div class="form-check form-check-inline text-left">
+                    <%= f.radio_button :gender, 'male' , class: "form-check-input" %>
+                    <%= f.label :gender, "Male", class:"form-check-label", :value => 'male' %>
+                </div>
+                <div class="form-check form-check-inline text-left">
+                    <%= f.radio_button :gender, 'female', class: "form-check-input" %>
+                    <%= f.label :gender, "Female", class:"form-check-label", :value => 'female' %>
+                </div>
+            </div>
+
+            <div class="form-group text-left">
+                <%= f.label :birthday %><br/>
+                <%= f.text_field :birthday, autofocus: true, autocomplete: "name", class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group text-left">
+                <%= f.label :description %><br/>
+                <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control" %>
+            </div>
+            <div class="btn", style="background-color: #EF9273; color: white;">Upload Image</div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="actions">
+            <%= f.submit "Add Cat", class: "btn", style: "background-color: #EF9273; color: white;" %>
+        </div>
+    </div>
+
+<% end %>
