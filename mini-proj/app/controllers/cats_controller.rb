@@ -27,7 +27,7 @@ class CatsController < ApplicationController
     @cat = Cat.find(params[:id])
     if @cat.update_attributes(cat_params)
       flash[:success] = "Cat updated!"
-      redirect_to @cat
+      redirect_to cats_path
     else
       render 'edit'
     end 

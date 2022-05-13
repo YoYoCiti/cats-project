@@ -1,6 +1,6 @@
 
 
-<h2>Add Cat</h2>
+<h2><%= yield(:title) %></h2>
 
 <%= form_for(@cat) do |f| %>
     <%= render "shared/error_messages", object: f.object%>
@@ -26,7 +26,7 @@
 
             <div class="form-group text-left">
                 <%= f.label :birthday %><br/>
-                <%= f.text_field :birthday, autofocus: true, autocomplete: "name", class: "form-control" %>
+                <%= f.date_field :birthday, autofocus: true, autocomplete: "name", class: "form-control" %>
             </div>
         </div>
 
@@ -41,7 +41,7 @@
 
     <div class="row justify-content-center">
         <div class="actions">
-            <%= f.submit "Add Cat", class: "btn", style: "background-color: #EF9273; color: white;" %>
+            <%= f.submit yield(:button_text), class: "btn", style: "background-color: #EF9273; color: white;" %>
         </div>
     </div>
 
