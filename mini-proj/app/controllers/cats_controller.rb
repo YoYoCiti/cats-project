@@ -48,7 +48,7 @@ class CatsController < ApplicationController
     def cat_params 
       params.require(:cat).permit(:name, :gender, :birthday, :description, :image, 
                                   tags_attributes: [:id, :cat_id, :trait_id, :_destroy, 
-                                  trait_attributes: [:name]])
+                                  trait_attributes: [:id, :description, :_destroy]])
     end
 
     def admin_user 
