@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require cocoon
+//= require select2
 //= require_tree .
