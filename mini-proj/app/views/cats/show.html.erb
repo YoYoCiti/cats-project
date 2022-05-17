@@ -4,7 +4,7 @@
     <div class="col">
         <div class="card" style="border-radius: 15px; flex-direction: row;">
             <% if @cat.image.attached? %>
-                <%= image_tag(@cat.image, class: "card-img-top", style: "width: 50%") %>
+                <%= image_tag(@cat.image, class: "card-img-top", style: "width: 50%; height: 40vh; object-fit: cover") %>
             <% end %>
 
             <div class="card-body col">
@@ -20,11 +20,11 @@
                 </div>
 
                 <div class="row">
-                    <% @cat.traits.each do |trait| %>
-                    <div class="col">
-                        <p><%= fa_icon gender_icon(@cat.gender) %> <%= trait.description %></p>
+                    <div class="col" style="margin-bottom: 16px;">
+                        <% @cat.traits.each do |trait| %>
+                            <span><%= fa_icon "tag" %> <%= trait.description %></span>
+                        <% end %>
                     </div>
-                    <% end %>
                 </div>
                 <p class="card-text"><%= @cat.description %></p>
                 <%= link_to "#{@cat.name}'s Feed", '#', class: "btn", style: "background-color: #EF9273; color: white;" %>        
