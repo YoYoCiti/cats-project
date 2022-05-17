@@ -15,7 +15,7 @@
                         <p><%= fa_icon gender_icon(@cat.gender) %> <%= @cat.gender.humanize %></p>
                     </div>
                     <div class="col-sm-5">
-                        <p><%= fa_icon "birthday-cake" %> <%= @cat.birthday %></p>
+                        <p><%= fa_icon "birthday-cake" %> <%= @cat.birthday.to_s(:long_ordinal) %></p>
                     </div>
                 </div>
 

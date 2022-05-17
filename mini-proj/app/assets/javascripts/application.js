@@ -17,4 +17,5 @@
 //= require turbolinks
 //= require cocoon
 //= require select2
+//= require bootstrap-datepicker
 //= require_tree .
