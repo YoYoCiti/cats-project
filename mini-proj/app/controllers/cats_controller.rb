@@ -3,6 +3,7 @@ class CatsController < ApplicationController
 
   def new
     @cat = Cat.new 
+    @cat.tags.build 
   end
 
   def show 
@@ -45,7 +46,9 @@ class CatsController < ApplicationController
 
   private 
     def cat_params 
-      params.require(:cat).permit(:name, :gender, :birthday, :description, :image)
+      params.require(:cat).permit(:name, :gender, :birthday, :description, :image, 
+                                  tags_attributes: [:id, :cat_id, :trait_id, :_destroy, 
+                                  trait_attributes: [:name]])
     end
 
     def admin_user 

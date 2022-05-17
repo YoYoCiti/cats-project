@@ -28,6 +28,7 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'file_validators'
+gem 'cocoon'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

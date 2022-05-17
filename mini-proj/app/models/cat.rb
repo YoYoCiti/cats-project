@@ -7,6 +7,7 @@ class Cat < ApplicationRecord
 
     has_many :tags, dependent: :destroy
     has_many :traits, through: :tags, source: :trait 
+    accepts_nested_attributes_for :tags, allow_destroy: true
 
     has_one_attached :image
 

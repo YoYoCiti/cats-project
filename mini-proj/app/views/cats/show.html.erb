@@ -9,6 +9,7 @@
 
             <div class="card-body col">
                 <h5 class="card-title"><%= @cat.name %></h5>
+
                 <div class="row">
                     <div class="col-sm-3">
                         <p><%= fa_icon gender_icon(@cat.gender) %> <%= @cat.gender.humanize %></p>
@@ -16,6 +17,14 @@
                     <div class="col-sm-5">
                         <p><%= fa_icon "birthday-cake" %> <%= @cat.birthday %></p>
                     </div>
+                </div>
+
+                <div class="row">
+                    <% @cat.traits.each do |trait| %>
+                    <div class="col">
+                        <p><%= fa_icon gender_icon(@cat.gender) %> <%= trait.description %></p>
+                    </div>
+                    <% end %>
                 </div>
                 <p class="card-text"><%= @cat.description %></p>
                 <%= link_to "#{@cat.name}'s Feed", '#', class: "btn", style: "background-color: #EF9273; color: white;" %>        
