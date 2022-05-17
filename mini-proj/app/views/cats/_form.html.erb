@@ -35,7 +35,7 @@
                 <%= f.label :description %><br/>
                 <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control" %>
             </div>
-            <div class="btn", style="background-color: #EF9273; color: white;">Upload Image</div>
+            <%= f.file_field :image %>
         </div>
     </div>
 
