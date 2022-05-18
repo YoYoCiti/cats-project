@@ -32,6 +32,12 @@ class User < ApplicationRecord
     cats.include?(cat)
   end 
 
+  # Returns cats that user is not subscribed to 
+  def browse 
+    subscribed_cat_ids = "SELECT cat_id FROM subscriptions WHERE user_id = :user_id"
+    Cat.where.not("id IN (#{subscribed_cat_ids})", user_id: id)
+  end
+
   private 
   def add_default_avatar
     unless avatar.attached?

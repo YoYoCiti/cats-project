@@ -4,29 +4,5 @@
     <h1>My Cats</h1>
 </div>
 
-<div class="card-deck">
-    <% @cats.each do |cat| %>
-        <div class="card" style="max-width: 300px;">
-            <%= image_tag(cat.image, class: "card-img-top", style: "height: 20vh; object-fit: cover") %>
-            <div class="card-body">
-                <h5 class="card-title"><%= cat.name %></div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <p><%= fa_icon gender_icon(cat.gender) %> <%= cat.gender.humanize %></p>
-                    </div>
-                    <div class="col-sm-5">
-                        <p><%= fa_icon "birthday-cake" %> <%= cat.birthday.to_s(:long_ordinal) %></p>
-                    </div>
-                </div>
+<%= render '/cats/cats_card_deck' %>
 
-                <div class="row">
-                    <div class="col" style="margin-bottom: 16px;">
-                        <% cat.traits.each do |trait| %>
-                            <span><%= fa_icon "tag" %> <%= trait.description %></span>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <% end %>
-</div>
