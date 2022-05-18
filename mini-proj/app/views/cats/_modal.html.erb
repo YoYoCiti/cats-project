@@ -1,0 +1,32 @@
+ <script>
+    $(document).ready(function(){
+        $("#delete-collection").select2({
+            width: '100%'
+        });
+    });
+</script>
+ 
+ <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="margin-left: 20px;">
+    Delete Multiple
+</button>
+
+<%= form_for :trash, url: "cats/trash", :method => :delete do |f| %>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Multiple Cats</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <%= f.collection_select(:cat_id, Cat.all, :id, :name, {include_hidden: false}, {id: "delete-collection", multiple: true}) %>
+            </div>
+            <div class="modal-footer">
+                <%= f.submit "Confirm Delete", class: "btn" %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>

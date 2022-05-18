@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'subscriptions/create'
   get 'subscriptions/destroy'
   get 'cats/new'
+  get 'cats/trash'
+  delete 'cats/trash' => 'cats#trash'
 
   root 'static_pages#home'
 

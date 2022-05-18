@@ -1,5 +1,5 @@
 class CatsController < ApplicationController
-  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy, :trash]
 
   def new
     @cat = Cat.new 
@@ -57,6 +57,17 @@ class CatsController < ApplicationController
         redirect_to cats_path
       }
       format.json { head :no_content }
+    end
+  end
+
+  def trash
+    Cat.where(id: params[:trash][:cat_id].reject(&:blank?)).destroy_all
+    respond_to do |format|
+      format.html {
+        flash[:success] = "Cats deleted"
+        redirect_to cats_path
+      }
+      format.json { head :no_content }  
     end
   end
 
