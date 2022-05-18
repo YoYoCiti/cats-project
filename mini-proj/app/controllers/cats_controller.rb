@@ -35,7 +35,7 @@ class CatsController < ApplicationController
   end
 
   def index 
-    @cats = Cat.all
+    @cats = Cat.all.includes(image_attachment: [:blob], tags: [:trait])
   end
 
   def destroy 

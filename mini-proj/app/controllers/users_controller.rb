@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     def cats 
         @user = User.find(params[:id])
-        @cats = @user.cats 
+        @cats = @user.cats.includes(image_attachment: [:blob], tags: [:trait])
         render 'show_cats'
     end
 
