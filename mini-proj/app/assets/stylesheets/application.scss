@@ -15,6 +15,7 @@
  */
  @import "bootstrap";
  @import "font-awesome";
+ @import 'datatables';
 
  body {
      background-color: #FEF9F8;
@@ -47,4 +48,12 @@
     .btn {
         margin: 5px;
     }
+}
+
+#cats-datatable_wrapper {
+    width: 100%;
+}
+
+#data-row {
+    cursor: pointer;
 }

@@ -18,4 +18,5 @@
 //= require cocoon
 //= require select2
 //= require bootstrap-datepicker
+//= require datatables
 //= require_tree .

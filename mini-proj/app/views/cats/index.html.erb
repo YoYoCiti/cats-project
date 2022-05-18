@@ -1,13 +1,31 @@
 <%= provide(:title, "All Cats") %>
 
+<script>
+    $(document).ready(function() {
+        $('#cats-datatable').dataTable({
+            autoWidth: false, 
+            fixedColumns: true,
+            order: [0, 'asc']
+        });
+
+        $("tr[data-link]").click(function(e) {
+            window.location = $(this).data("link")
+        });
+
+        //$('#table-button').addEventListener('click', function(e) {
+            //e.stopPropagation();
+        //});
+    });
+</script>
+
 <div class="row">
     <h1>All Cats</h1>
 </div>
 <div class="row" style="padding: 15px; padding-left: 0;">
-    <%= link_to "Add Cat", new_cat_path ,class: "btn", style: "background-color: #EF9273; color: white;" %>
+    <%= link_to "Add Cat", new_cat_path, class: "btn" %>
 </div>
 <div class="row">
-    <table class="table table-striped table-bordered" style="width:100%">
+    <table class="table table-striped table-bordered" id="cats-datatable">
         <thead>
             <tr>
                 <th>Name</th>
@@ -18,7 +36,7 @@
         </thead>
         <tbody>
             <% @cats.each do |cat| %>
-            <tr>
+            <tr data-link="<%= cat_path(cat) %>" id="data-row">
                 <td><%= cat.name %></td>
                 <td><%= cat.gender.humanize %></td>
                 <td><%= cat.birthday %></td>
