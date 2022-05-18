@@ -24,12 +24,11 @@
                 <td><%= cat.birthday %></td>
                 <td>
                     <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" style="background-color:transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn dropdown-toggle" type="button" id="table-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             View
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <%= link_to "View", cat, class: "dropdown-item" %>
-                            <%= link_to "Unsubscribe", '#', class: "dropdown-item" %>
+                            <%= link_to "View", cat, class: "dropdown-item"%>
                             <%= link_to "Edit", edit_cat_path(cat), class: "dropdown-item" %>
                             <%= link_to "Delete", cat, method: :delete, data: { confirm: "Confirm delete?" }, class: "dropdown-item" %>
                         </div>
