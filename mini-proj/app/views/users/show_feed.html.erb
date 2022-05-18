@@ -1,3 +1,11 @@
+<script type="text/javascript">
+  $(document).on('turbolinks:load', function(){
+     $('.carousel').carousel({
+        interval: false
+     });
+  });
+</script>
+
 <%= provide(:title, "Cat Feed") %>
 
 <% if @feed_posts.any? %>
