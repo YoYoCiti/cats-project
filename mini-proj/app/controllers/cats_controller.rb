@@ -12,11 +12,17 @@ class CatsController < ApplicationController
 
   def create 
     @cat = Cat.new(cat_params)
-    if @cat.save
-      flash[:success] = "Cat added!"
-      redirect_to cats_path
-    else 
-      render 'new'
+    respond_to do |format|
+      if @cat.save
+        format.html {
+          flash[:success] = "Cat added!"
+          redirect_to cats_path
+        }
+        format.json { render :show, status: :created, location: @cat }
+      else 
+        format.html{ render 'new' }
+        format.json { render json: @cat.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -25,13 +31,18 @@ class CatsController < ApplicationController
   end
 
   def update 
-    @cat = Cat.find(params[:id])
-    if @cat.update_attributes(cat_params)
-      flash[:success] = "Cat updated!"
-      redirect_to cats_path
-    else
-      render 'edit'
-    end 
+    respond_to do |format|
+      if @cat.update_attributes(cat_params)
+        format.html {
+          flash[:success] = "Cat updated!"
+          redirect_to cats_path
+        }
+        format.json { render :show, status: :ok, location: @cat }
+      else
+        format.html { render 'edit' }
+        format.json { render json: @cat.errors, status: :unprocessable_entity }
+      end 
+    end
   end
 
   def index 
@@ -40,8 +51,13 @@ class CatsController < ApplicationController
 
   def destroy 
     Cat.find(params[:id]).destroy 
-    flash[:success] = "Cat deleted"
-    redirect_to cats_path
+    respond_to do |format|
+      format.html {
+        flash[:success] = "Cat deleted"
+        redirect_to cats_path
+      }
+      format.json { head :no_content }
+    end
   end
 
   private 
