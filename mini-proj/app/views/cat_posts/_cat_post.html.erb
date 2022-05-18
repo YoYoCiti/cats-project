@@ -14,7 +14,9 @@
             <div class="carousel-inner">
                 <% cat_post.images.each.with_index do |image, index| %>
                 <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
-                    <%= image_tag(image, class: 'd-block w-100 img-fluid', style: "height: 40vh; object-fit: cover") %>
+                    <%= link_to rails_blob_path(image, disposition: "attachment") do %>
+                        <%= image_tag(image, class: 'd-block w-100 img-fluid', style: "height: 40vh; object-fit: cover") %>
+                    <% end %>
                 </div>
                 <% end %>
             </div>
