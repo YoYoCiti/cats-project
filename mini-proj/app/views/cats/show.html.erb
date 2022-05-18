@@ -27,7 +27,11 @@
                     </div>
                 </div>
                 <p class="card-text"><%= @cat.description %></p>
-                <%= link_to "#{@cat.name}'s Feed", '#', class: "btn", style: "background-color: #EF9273; color: white;" %>        
+                <% if user_signed_in? %>
+                    <%= render 'subscribe_form' %>
+                <% else %>
+                    <%= link_to "Sign in to Subscribe", login_path, class: "btn", style: "background-color: #EF9273; color: white;" %>
+                <% end %>        
             </div>
         </div>
     </div>

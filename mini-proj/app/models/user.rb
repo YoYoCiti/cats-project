@@ -12,9 +12,25 @@ class User < ApplicationRecord
 
   has_one_attached :avatar 
 
+  # Returns true if user is admin
   def admin? 
     type == 'Admin'
   end
+
+  # Subscribes to a cat
+  def subscribe(cat)
+    cats << cat
+  end 
+
+  # Unsubscribe to a cat
+  def unsubscribe(cat) 
+    cats.delete(cat) 
+  end
+
+  # Returns true if user is subscribed to the cat
+  def subscribed?(cat)
+    cats.include?(cat)
+  end 
 
   private 
   def add_default_avatar

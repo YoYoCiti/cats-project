@@ -1,0 +1,4 @@
+<%= form_for(current_user.subscriptions.build) do |f| %>
+    <div><%= hidden_field_tag :cat_id, @cat.id %></div>
+    <%= f.submit "Add to Family", class: "btn" %> 
+<% end %>

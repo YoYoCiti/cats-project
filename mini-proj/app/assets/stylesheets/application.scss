@@ -20,3 +20,11 @@
      background-color: #FEF9F8;
      font-family:Verdana, Geneva, Tahoma, sans-serif;
  }
+
+ .btn {
+    background-color: #EF9273; 
+    color: white;
+    &:hover {
+        color: white
+    }
+ }

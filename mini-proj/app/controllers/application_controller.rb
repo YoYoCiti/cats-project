@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar])
   end
+
+  def logged_in_user 
+    unless user_signed_in? 
+      flash[:danger] = "Please log in"
+      redirect_to login_path
+    end
+  end
 end
