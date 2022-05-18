@@ -1,4 +1,4 @@
-<div id="subsribe-form">
+<div id="subscribe-form">
     <% if current_user.subscribed?(@cat) %>
         <%= link_to "#{@cat.name}'s Feed", '#', class: "btn" %>
         <%= render 'unsubscribe' %>

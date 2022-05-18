@@ -50,8 +50,4 @@ class CatsController < ApplicationController
                                   tags_attributes: [:id, :cat_id, :trait_id, :_destroy, 
                                   trait_attributes: [:id, :description, :_destroy]])
     end
-
-    def admin_user 
-      redirect_to(root_url) unless current_user.admin? 
-    end
 end

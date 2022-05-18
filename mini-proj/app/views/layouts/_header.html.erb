@@ -13,7 +13,7 @@
 
       <% if user_signed_in? %>
         <%= link_to "My Cats", cats_user_path(current_user), class: "nav-item nav-link" %>
-        <%= link_to "Cat Feed", root_path, class: "nav-item nav-link" %>
+        <%= link_to "Cat Feed", feed_user_path(current_user), class: "nav-item nav-link" %>
         <%= link_to "My Profile", user_path(current_user), class: "nav-item nav-link" %>
 
         <% if current_user.admin? %>
@@ -23,7 +23,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to "All Cats", cats_path, class: "dropdown-item" %>
-            <%= link_to "Create Post", root_path, class: "dropdown-item" %>
+            <%= link_to "Create Post", new_cat_post_path, class: "dropdown-item" %>
           </div>
         </li>
         <% end %>

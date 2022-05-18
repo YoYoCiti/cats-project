@@ -1,0 +1,2 @@
+module CatPostsHelper
+end

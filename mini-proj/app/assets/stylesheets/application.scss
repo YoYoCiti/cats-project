@@ -41,3 +41,10 @@
     color: black;
     background-color: transparent;
 }
+
+#subscribe-form {
+    display: flex;
+    .btn {
+        margin: 5px;
+    }
+}

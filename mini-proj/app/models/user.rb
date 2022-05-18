@@ -38,6 +38,12 @@ class User < ApplicationRecord
     Cat.where.not("id IN (#{subscribed_cat_ids})", user_id: id)
   end
 
+  # Returns user feed
+  def feed 
+    subscribed_cat_ids = "SELECT cat_id FROM subscriptions WHERE user_id = :user_id"
+    CatPost.where("cat_id IN (#{subscribed_cat_ids})", user_id: id)
+  end
+
   private 
   def add_default_avatar
     unless avatar.attached?
