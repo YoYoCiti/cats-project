@@ -71,6 +71,12 @@ class CatsController < ApplicationController
     end
   end
 
+  def cat_posts 
+    @cat = Cat.find(params[:id])
+    @cat_posts = @cat.cat_posts.includes(images_attachments: [:blob])
+    render 'show_posts'
+  end
+
   private 
     def cat_params 
       params.require(:cat).permit(:name, :gender, :birthday, :description, :image, 

@@ -1,0 +1,28 @@
+<script type="text/javascript">
+  $(document).on('turbolinks:load', function(){
+     $('.carousel').carousel({
+        interval: false
+     });
+  });
+</script>
+
+<%= provide(:title, "#{@cat.name}'s Feed") %>
+
+<% if @cat_posts.any? %>
+<div class="row" style="padding: 15px">
+    <div class="col-sm-4">
+        <div class="card text-center" style="border-radius: 15px">
+            <%= image_tag(@cat.image, class: "card-img-top") %>
+            <div class="card-body">
+                <h5 class="card-title"><%= @cat.name %></h5>     
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <%= render @cat_posts %>
+    </div>
+</div>
+
+<% else %>
+    <h5>There are no posts available<h5>
+<% end %>
