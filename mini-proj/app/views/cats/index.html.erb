@@ -8,7 +8,7 @@
             order: [0, 'asc']
         });
 
-        $("tr td:not(:last-child)[data-link]").click(function(e) {
+        $("td[data-link]").click(function(e) {
             window.location = $(this).data("link")
         });
     });
@@ -39,7 +39,7 @@
                 <td data-link="<%= cat_path(cat) %>"><%= cat.name %></td>
                 <td data-link="<%= cat_path(cat) %>"><%= cat.gender.humanize %></td>
                 <td data-link="<%= cat_path(cat) %>"><%= cat.birthday %></td>
-                <td data-link="<%= cat_path(cat) %>">
+                <td>
                     <div class="dropdown">
                         <button class="btn dropdown-toggle" type="button" id="table-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             View
