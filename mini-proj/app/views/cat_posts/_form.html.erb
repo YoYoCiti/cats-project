@@ -1,12 +1,29 @@
 <script>
     $(document).ready(function(){
         $("#cat_post_cat_id").select2();
+
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+            });
+        }, false);
     });
 </script>
 
+
 <h2><%= yield(:title) %></h2>
 
-<%= form_for(@cat_post) do |f| %>
+<%= form_for(@cat_post, html: {class: "needs-validation", novalidate: true}) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
 
     <div><%= f.hidden_field :user_id, value: current_user.id %></div>
@@ -17,8 +34,10 @@
     </div>
 
     <div class="form-group text-left">
-        <%= f.label :content %><br/>
-        <%= f.text_area :content, autofocus: true, autocomplete: "content", class: "form-control" %>
+        <%= f.label :content, for: "validationCustom05" %><br/>
+        <%= f.text_area :content, autofocus: true, autocomplete: "content", class: "form-control", id: "validationCustom05", required: true %>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback"> Please provide content.</div>    
     </div>
 
     <div class="form-group text-left">

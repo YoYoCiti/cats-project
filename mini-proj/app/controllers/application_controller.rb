@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user 
-    redirect_to(root_url) unless current_user.admin? 
+    redirect_to(root_url) unless (user_signed_in? and current_user.admin?)
   end
 
   def current_user?(user)

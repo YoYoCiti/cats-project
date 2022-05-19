@@ -1,23 +1,45 @@
+<script>
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
 <h2><%= yield(:title) %></h2>
 
-<%= form_for(@cat) do |f| %>
+<%= form_for(@cat, html: {class: "needs-validation", novalidate: true}) do |f| %>
     <%= render "shared/error_messages", object: f.object%>
 
     <div class="row">
         <div class="col">
             <div class="form-group text-left">
-                <%= f.label :name %><br/>
-                <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+                <%= f.label :name, for: "validationCustom01" %><br/>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", id: "validationCustom01", required: true %>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback"> Please provide a name.</div>
             </div>
 
             <div class="form-group text-left">
                 <%= f.label :gender %><br/>
                 <div class="form-check form-check-inline text-left">
-                    <%= f.radio_button :gender, 'male' , class: "form-check-input" %>
+                    <%= f.radio_button :gender, 'male' , class: "form-check-input", required: true %>
                     <%= f.label :gender, "Male", class:"form-check-label", :value => 'male' %>
                 </div>
                 <div class="form-check form-check-inline text-left">
-                    <%= f.radio_button :gender, 'female', class: "form-check-input" %>
+                    <%= f.radio_button :gender, 'female', class: "form-check-input", required: true %>
                     <%= f.label :gender, "Female", class:"form-check-label", :value => 'female' %>
                 </div>
             </div>
@@ -43,10 +65,14 @@
 
         <div class="col">
             <div class="form-group text-left">
-                <%= f.label :description %><br/>
-                <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control" %>
+                <%= f.label :description, for: "validationCustom03" %><br/>
+                <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control", id: "validationCustom03", required: true %>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback"> Please provide a description.</div>
             </div>
+
             <%= f.file_field :image %>
+
         </div>
     </div>
 

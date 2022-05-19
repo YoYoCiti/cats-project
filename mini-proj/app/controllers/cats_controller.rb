@@ -1,5 +1,5 @@
 class CatsController < ApplicationController
-  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy, :trash]
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy, :trash, :index]
 
   def new
     @cat = Cat.new 

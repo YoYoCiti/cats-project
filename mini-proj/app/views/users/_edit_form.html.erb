@@ -1,49 +1,77 @@
-    <%= render "devise/shared/error_messages", resource: resource %>
+<script>
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+
+    // Get all form groups in need of validation
+    var validateGroup = document.getElementsByClassName('validate-me');
+
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        for (var i = 0; i < validateGroup.length; i++) {
+          validateGroup[i].classList.add('was-validated');
+        }
+      }, false);
+    });
+  }, false);
+})();
+</script>
     
-    <h2>Edit Information</h2>
+<%= render "devise/shared/error_messages", resource: resource %>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<h2>Edit Information</h2>
 
-      <div class="form-row">
-        <div class="form-group text-left col-md-6">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-        </div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "needs-validation", novalidate: true }) do |f| %>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
+  <div class="form-row">
+    <div class="form-group text-left col-md-6 validate-me">
+      <%= f.label :email, for: "validationCustom06" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "validationCustom06", required: true %>
+      <div class="invalid-feedback"> Please enter valid email to save your changes.</div>   
+    </div>
 
-        <div class="form-group text-left col-md-6">
-          <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
-        </div>
-      </div>
-
-      <div class="form-group text-left">
-      <%= f.file_field :avatar %>
-      </div>
-
-      <div class="form-group text-left">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-        <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
-        <% end %>
-      </div>
-
-      <div class="form-group text-left">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-      </div>
-
-      <div class="form-group text-left">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Update", class: "btn", style: "background-color: #EF9273; color: white;" %>
-      </div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
+
+    <div class="form-group text-left col-md-6">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+  <%= f.file_field :avatar %>
+  </div>
+
+  <div class="form-group text-left">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="form-group text-left">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+  </div>
+
+  <div class="form-group text-left validate-me">
+    <%= f.label :current_password, for: "validationCustom07" %><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", id: "validationCustom07", required: true %>
+    <div class="invalid-feedback">We need your current password to confirm your changes</div>   
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class: "btn", style: "background-color: #EF9273; color: white;" %>
+  </div>
+<% end %>
