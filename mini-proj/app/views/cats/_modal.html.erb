@@ -1,8 +1,12 @@
  <script>
-    $(document).ready(function(){
+    $(document).on('turbolinks:load', function() {
         $("#delete-collection").select2({
             width: '100%'
         });
+    });
+
+    $(document).on("turbolinks:before-cache", function() {
+        $('#delete-collection').select2('destroy');
     });
 </script>
  

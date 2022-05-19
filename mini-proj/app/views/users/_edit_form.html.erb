@@ -1,8 +1,6 @@
 <script>
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+$(document).on('turbolinks:load', function () {
+    'use strict';
     var forms = document.getElementsByClassName('needs-validation');
 
     // Get all form groups in need of validation
@@ -20,8 +18,7 @@
         }
       }, false);
     });
-  }, false);
-})();
+});
 </script>
     
 <%= render "devise/shared/error_messages", resource: resource %>

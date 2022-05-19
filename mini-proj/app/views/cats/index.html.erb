@@ -1,8 +1,10 @@
 <%= provide(:title, "All Cats") %>
 
 <script>
-    $(document).ready(function() {
-        $('#cats-datatable').dataTable({
+    var dataTable;
+    $(document).on('turbolinks:load', function() {
+        dataTable = $('#cats-datatable').dataTable({
+            retrieve: true,
             autoWidth: false, 
             fixedColumns: true,
             order: [0, 'asc']
