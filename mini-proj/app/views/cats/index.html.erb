@@ -8,13 +8,9 @@
             order: [0, 'asc']
         });
 
-        $("tr[data-link]").click(function(e) {
+        $("tr td:not(:last-child)[data-link]").click(function(e) {
             window.location = $(this).data("link")
         });
-
-        //$('#table-button').addEventListener('click', function(e) {
-            //e.stopPropagation();
-        //});
     });
 </script>
 
@@ -39,11 +35,11 @@
         </thead>
         <tbody>
             <% @cats.each do |cat| %>
-            <tr data-link="<%= cat_path(cat) %>" id="data-row">
-                <td><%= cat.name %></td>
-                <td><%= cat.gender.humanize %></td>
-                <td><%= cat.birthday %></td>
-                <td>
+            <tr id="data-row">
+                <td data-link="<%= cat_path(cat) %>"><%= cat.name %></td>
+                <td data-link="<%= cat_path(cat) %>"><%= cat.gender.humanize %></td>
+                <td data-link="<%= cat_path(cat) %>"><%= cat.birthday %></td>
+                <td data-link="<%= cat_path(cat) %>">
                     <div class="dropdown">
                         <button class="btn dropdown-toggle" type="button" id="table-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             View
