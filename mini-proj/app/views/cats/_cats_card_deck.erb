@@ -1,20 +1,22 @@
 <div class="row">
     <% @cats.each do |cat| %>
-        <%= link_to cat_path(cat), class: "card", style: "width: 300px; margin-left: 30px; margin-bottom: 30px;" do %>
-            <%= image_tag(cat.image, class: "card-img-top", style: "height: 25vh; object-fit: cover") %> 
-            <div class="card-body">
-                <h5 class="card-title"><%= cat.name %></h5>  
+        <div class="col-lg-4 mb-4">
+            <%= link_to cat_path(cat), class: "card" do %>
+                <%= image_tag(cat.image, class: "card-img-top", style: "height: 25vh; object-fit: cover") %> 
+                <div class="card-body">
+                    <h5 class="card-title"><%= cat.name %></h5>  
 
-                <span style="margin-right: 25px;"><%= fa_icon gender_icon(cat.gender) %> <%= cat.gender.humanize %></span>
-                <span><%= fa_icon "birthday-cake" %> <%= cat.birthday.to_s(:long_ordinal) %></span>
-        
-                <div style="margin-bottom: 16px; margin-top: 16px;">
-                    <% cat.traits.each do |trait| %>
-                        <span><%= fa_icon "tag" %> <%= trait.description %></span>
-                    <% end %>
+                    <span style="margin-right: 25px;"><%= fa_icon gender_icon(cat.gender) %> <%= cat.gender.humanize %></span>
+                    <span><%= fa_icon "birthday-cake" %> <%= cat.birthday.to_s(:long_ordinal) %></span>
+            
+                    <div style="margin-bottom: 16px; margin-top: 16px;">
+                        <% cat.traits.each do |trait| %>
+                            <span><%= fa_icon "tag" %> <%= trait.description %></span>
+                        <% end %>
+                    </div>
                 </div>
-            </div>
-        <% end %>
+            <% end %>
+        </div>
     <% end %>
 </div>
 
