@@ -1,3 +1,5 @@
-<%= form_for(current_user.subscriptions.find_by(cat_id: @cat.id), html: {method: :delete}) do |f| %>
+<%= link_to "#{@cat.name}'s Feed", '#', class: "btn" %>
+
+<%= form_for(current_user.subscriptions.find_by(cat_id: @cat.id), html: {method: :delete}, remote: true) do |f| %>
     <%= f.submit "Unsubscribe", class: "btn d-inline" %> 
 <% end %>

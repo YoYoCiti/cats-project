@@ -6,6 +6,7 @@ class SubscriptionsController < ApplicationController
     current_user.subscribe(@cat)
     respond_to do |format|
       format.html { redirect_to @cat }
+      format.js
     end
   end
 
@@ -14,6 +15,7 @@ class SubscriptionsController < ApplicationController
     current_user.unsubscribe(@cat)
     respond_to do |format|
       format.html { redirect_to @cat }
+      format.js
     end
   end
 end
