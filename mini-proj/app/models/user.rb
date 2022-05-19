@@ -41,7 +41,7 @@ class User < ApplicationRecord
   # Returns user feed
   def feed 
     subscribed_cat_ids = "SELECT cat_id FROM subscriptions WHERE user_id = :user_id"
-    CatPost.where("cat_id IN (#{subscribed_cat_ids})", user_id: id)
+    CatPost.includes(images_attachments: [:blob], cat: [image_attachment: [:blob], tags: [:trait]]).where("cat_id IN (#{subscribed_cat_ids})", user_id: id)
   end
 
   private 

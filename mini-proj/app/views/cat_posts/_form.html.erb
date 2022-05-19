@@ -1,6 +1,8 @@
 <script>
     $(document).ready(function(){
-        $("#cat_post_cat_id").select2();
+        $("#cat_post_cat_id").select2({
+            width: '100%'
+        });
 
         'use strict';
         window.addEventListener('load', function() {
@@ -17,6 +19,27 @@
             }, false);
             });
         }, false);
+
+        var $fileInput = $('.file-input');
+        var $droparea = $('.file-droparea');
+
+        $fileInput.on('dragenter focus click', function () {
+            $droparea.addClass('is-active');
+        });
+
+        $fileInput.on('dragleave blur drop', function () {
+            $droparea.removeClass('is-active');
+        });
+
+        $fileInput.on('change', function () {
+            var filesCount = $(this)[0].files.length;
+            var $textContainer = $(this).prev('.js-set-number');
+            if (filesCount === 1) {
+                $textContainer.text($(this).val().split('\\').pop());
+            } else {
+                $textContainer.text(filesCount + ' uploaded files');
+            }
+        });
     });
 </script>
 
@@ -42,7 +65,10 @@
 
     <div class="form-group text-left">
         <%= f.label :images %>
-        <%= f.file_field :images, multiple: true %>
+        <div class="file-droparea">
+        <p class="file-msg js-set-number"> Choose your files or drag them here </p>
+            <%= f.file_field :images, multiple: true, class: "file-input" %>
+        </div>
     </div>
 
     <div class="actions">
