@@ -5,6 +5,13 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def index
+        @users = User.all 
+        respond_to do |format|
+            format.xlsx
+        end
+    end
+
     def cats 
         @user = User.find(params[:id])
         @cats = @user.cats.includes(image_attachment: [:blob], tags: [:trait])

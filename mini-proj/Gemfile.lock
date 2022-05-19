@@ -45,6 +45,13 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
+    axlsx (2.0.1)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (~> 1.0.0)
+    axlsx_rails (0.5.2)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
     bcrypt (3.1.17)
     bindex (0.8.1)
     bootstrap (4.0.0)
@@ -82,6 +89,7 @@ GEM
       railties (>= 3.2, < 8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    htmlentities (4.3.4)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -146,6 +154,7 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rubyzip (1.0.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -192,6 +201,8 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  axlsx (= 2.0.1)
+  axlsx_rails
   bootstrap (~> 4.0.0)
   bootstrap-datepicker-rails
   byebug
@@ -207,6 +218,7 @@ DEPENDENCIES
   pg
   puma (~> 3.0)
   rails (~> 5.2.0)
+  rubyzip (= 1.0.0)
   sass-rails (~> 5.0)
   select2-rails
   turbolinks (~> 5)
