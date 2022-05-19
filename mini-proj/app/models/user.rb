@@ -20,6 +20,7 @@ class User < ApplicationRecord
   # Subscribes to a cat
   def subscribe(cat)
     cats << cat
+    UserMailer.subscription_notice(self ,cat).deliver_later
   end 
 
   # Unsubscribe to a cat
@@ -35,7 +36,7 @@ class User < ApplicationRecord
   # Returns cats that user is not subscribed to 
   def browse 
     subscribed_cat_ids = "SELECT cat_id FROM subscriptions WHERE user_id = :user_id"
-    Cat.where.not("id IN (#{subscribed_cat_ids})", user_id: id)
+    Cat.includes(image_attachment: [:blob], tags: [:trait]).where.not("id IN (#{subscribed_cat_ids})", user_id: id)
   end
 
   # Returns user feed
