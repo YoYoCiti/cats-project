@@ -4,7 +4,7 @@ class CatsController < ApplicationController
 
   def new
     @cat = Cat.new 
-    @cat.tags.build 
+    #@cat.tags.build 
   end
 
   def show 
