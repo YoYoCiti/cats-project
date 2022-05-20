@@ -7,4 +7,8 @@ module ApplicationHelper
         else name 
         end
     end
+
+    def display_count(num, text) 
+        pluralize(number_with_delimiter(num), text)
+    end
 end

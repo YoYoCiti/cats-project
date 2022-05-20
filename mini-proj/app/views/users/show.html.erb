@@ -7,7 +7,8 @@
             <div class="card-body">
                 <h5 class="card-title"><%= @user.name %></h5>
                 <p class="card-text"><%= @user.email %></p>
-                <%= link_to "My Cats", '#', class: "btn", style: "background-color: #EF9273; color: white;" %>        
+                <p class="card-text"><%= display_count(@user.cats.count, "Cat") %> in Family</p>
+                <%= link_to "My Cats", cats_user_path(@user), class: "btn" %>        
             </div>
         </div>
     </div>

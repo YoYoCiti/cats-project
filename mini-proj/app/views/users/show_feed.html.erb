@@ -14,7 +14,9 @@
         <div class="card text-center" style="border-radius: 15px">
             <%= image_tag(@user.avatar, class: "card-img-top") %>
             <div class="card-body">
-                <h5 class="card-title"><%= @user.name %></h5>     
+                <h5 class="card-title"><%= @user.name %></h5> 
+                <p class="card-text"><%= display_count(@user.cats.count, "Cat") %> in Family</p>
+                <%= link_to "My Cats", cats_user_path(@user), class: "btn" %>        
             </div>
         </div>
     </div>

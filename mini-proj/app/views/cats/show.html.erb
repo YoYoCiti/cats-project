@@ -18,7 +18,7 @@
                         <p><%= fa_icon "birthday-cake" %> <%= @cat.birthday.to_s(:long_ordinal) %></p>
                     </div>
                     <div class="col-sm-4">
-                        <p><%= fa_icon "heart" %> <%= pluralize(number_with_delimiter(@cat.subscribers.count), "subscriber") %></p>
+                        <p><%= fa_icon "heart" %> <%= display_count(@cat.subscribers.count, "subscriber") %></p>
                     </div>
                 </div>
 
