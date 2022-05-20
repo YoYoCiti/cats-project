@@ -1,5 +1,6 @@
 class CatsController < ApplicationController
   before_action :admin_user, only: [:new, :create, :edit, :update, :destroy, :trash, :index]
+  before_action :logged_in_user, only: [:cat_posts]
 
   def new
     @cat = Cat.new 
@@ -74,7 +75,12 @@ class CatsController < ApplicationController
   def cat_posts 
     @cat = Cat.find(params[:id])
     @cat_posts = @cat.cat_posts.includes(images_attachments: [:blob])
-    render 'show_posts'
+    if current_user.subscribed?(@cat)
+      render 'show_posts'
+    else 
+      flash[:danger] = "Add #{@cat.name} to your family to view their feed"
+      redirect_to @cat
+    end
   end
 
   private 
