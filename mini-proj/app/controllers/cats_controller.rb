@@ -32,6 +32,7 @@ class CatsController < ApplicationController
   end
 
   def update 
+    @cat = Cat.find(params[:id])
     respond_to do |format|
       if @cat.update_attributes(cat_params)
         format.html {
