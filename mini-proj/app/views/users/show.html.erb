@@ -6,7 +6,8 @@
             <%= image_tag(@user.avatar, class: "card-img-top") %>
             <div class="card-body">
                 <h5 class="card-title"><%= @user.name %></h5>
-                <%= link_to "My Family", '#', class: "btn", style: "background-color: #EF9273; color: white;" %>        
+                <p class="card-text"><%= @user.email %></p>
+                <%= link_to "My Cats", '#', class: "btn", style: "background-color: #EF9273; color: white;" %>        
             </div>
         </div>
     </div>
