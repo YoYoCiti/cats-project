@@ -45,6 +45,7 @@ $(document).on('turbolinks:load', function () {
   </div>
 
   <div class="form-group text-left">
+  <label>Avatar Image: </label>
   <%= f.file_field :avatar %>
   </div>
 
@@ -52,8 +53,7 @@ $(document).on('turbolinks:load', function () {
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em class="form-text text-muted"><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 

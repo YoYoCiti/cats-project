@@ -1,18 +1,15 @@
 <%= provide(:title, @user.name) %>
 
-<div class="row" style="padding: 15px">
+<div class="row justify-content-center" style="padding: 15px">
     <div class="col-sm-4">
         <div class="card text-center" style="border-radius: 15px">
             <%= image_tag(@user.avatar, class: "card-img-top") %>
             <div class="card-body">
                 <h5 class="card-title"><%= @user.name %></h5>
                 <p class="card-text"><%= @user.email %></p>
-                <p class="card-text"><%= display_count(@user.cats.count, "Cat") %> in Family</p>
-                <%= link_to "My Cats", cats_user_path(@user), class: "btn" %>        
+                <p class="card-text"><%= display_count(@user.cats.count, "Cat") %> in Family</p> 
+                <%= link_to "Edit Profile", edit_user_registration_path(@user), class: "btn" %>    
             </div>
         </div>
-    </div>
-    <div class="col-sm-8">
-        <%= render "devise/registrations/edit" %> 
     </div>
 </div>

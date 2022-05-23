@@ -56,6 +56,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Active Sotrage Config
+  # Change to :test to prevent email from sending in dev mode
   config.active_storage.service = :local
 
   # Mail Config
