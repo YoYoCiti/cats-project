@@ -35,14 +35,14 @@ class User < ApplicationRecord
 
   # Returns cats that user is not subscribed to 
   def browse 
-    subscribed_cat_ids = "SELECT cat_id FROM subscriptions WHERE user_id = :user_id"
-    Cat.includes(image_attachment: [:blob], tags: [:trait]).where.not("id IN (#{subscribed_cat_ids})", user_id: id)
+    subscribed_cat_ids = User.joins(:subscriptions).where(id: id).pluck(:cat_id)
+    Cat.includes(:traits, image_attachment: [:blob]).where.not(id: subscribed_cat_ids)
   end
 
   # Returns user feed
   def feed 
-    subscribed_cat_ids = "SELECT cat_id FROM subscriptions WHERE user_id = :user_id"
-    CatPost.includes(images_attachments: [:blob], cat: [image_attachment: [:blob], tags: [:trait]]).where("cat_id IN (#{subscribed_cat_ids})", user_id: id)
+    subscribed_cat_ids = User.joins(:subscriptions).where(id: id).pluck(:cat_id)
+    CatPost.includes(images_attachments: [:blob], cat: [:traits, image_attachment: [:blob]]).where(cat_id: subscribed_cat_ids)
   end
 
   private 

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
     def show 
         @user = User.find(params[:id])
-        redirect_to root_url unless current_user?(@user)
+        redirect_to root_url unless helpers.current_user?(@user)
     end
 
     def index
@@ -16,13 +16,13 @@ class UsersController < ApplicationController
 
     def cats 
         @user = User.find(params[:id])
-        @cats = @user.cats.includes(image_attachment: [:blob], tags: [:trait])
+        @cats = @user.cats.includes(:traits, image_attachment: [:blob])
         render 'show_cats'
     end
 
     def feed 
         @user = User.find(params[:id])
-        if current_user?(@user)
+        if helpers.current_user?(@user)
             @feed_posts = @user.feed
             render 'show_feed'
         else 

@@ -25,7 +25,4 @@ class ApplicationController < ActionController::Base
     redirect_to(root_url) unless (user_signed_in? and current_user.admin?)
   end
 
-  def current_user?(user)
-    user == current_user
-  end
 end
