@@ -57,4 +57,16 @@ Rails.application.configure do
 
   # Active Sotrage Config
   config.active_storage.service = :local
+
+  # Mail Config
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com", 
+    port: 587, 
+    user_name: ENV["GMAIL_USERNAME"], 
+    password: ENV["GMAIL_PASSWORD"], 
+    authentication: "plain", 
+    enable_starttls_auto: true
+  }
+
 end
