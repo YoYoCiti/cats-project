@@ -6,10 +6,10 @@ class Subscription < ApplicationRecord
   validates :user_id, presence: true 
 
   def self.cats_subscription_count
-    Subscription.distinct.pluck(:cat_id).count
+    Subscription.distinct.pluck(:cat_id).size
   end
 
   def self.user_subscription_count
-    Subscription.distinct.pluck(:user_id).count
+    Subscription.distinct.pluck(:user_id).size
   end
 end
