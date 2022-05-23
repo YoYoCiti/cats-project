@@ -4,7 +4,6 @@ class CatsController < ApplicationController
 
   def new
     @cat = Cat.new 
-    #@cat.tags.build 
   end
 
   def show 
@@ -48,7 +47,7 @@ class CatsController < ApplicationController
   end
 
   def index 
-    @cats = Cat.all.includes(image_attachment: [:blob], tags: [:trait])
+    @cats = Cat.includes(image_attachment: [:blob], tags: [:trait]).all
   end
 
   def destroy 

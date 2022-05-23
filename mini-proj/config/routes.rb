@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'subscriptions/destroy'
   get 'cats/new'
   get 'cats/trash'
+  get '/stats' => 'static_pages#stats'
   delete 'cats/trash' => 'cats#trash'
 
   root 'static_pages#home'

@@ -1,0 +1,47 @@
+<%= provide(:title, "Statistics") %>
+
+<div class="container">
+    <div class="card" style="border-radius: 15px">
+        <div id="pie-chart" style="width: 600px;height:400px;"></div>
+        <div id="bar-graph" style="width: 600px; height: 400px;"></div>
+    </div>
+</div>
+
+<script>
+    var myPieChart = echarts.init(document.getElementById('pie-chart'));
+    var myBarGraph = echarts.init(document.getElementById('bar-graph'));
+
+    var pieChartOption = {
+        series: [
+            {
+                type: 'pie',
+                data: [
+                    {
+                        value: <%= @subscribed_cat_count %>,
+                        name: 'Subscribed Cats'
+                    },
+                    {
+                        value: <%= @unsubscribed_cat_count %>,
+                        name: 'Unsubscribed Cats'
+                    }
+                ]
+            }
+        ]
+    };
+
+    barGraphOption = {
+        xAxis: {
+            data: ['Subscribed Users', 'Unsubscribed Users']
+        },
+        yAxis: {},
+        series: [
+            {
+                type: 'bar',
+                data: [<%= @subscribed_user_count %>, <%= @unsubscribed_user_count %>]
+            }
+        ]
+    };
+
+    myPieChart.setOption(pieChartOption);
+    myBarGraph.setOption(barGraphOption);
+</script>

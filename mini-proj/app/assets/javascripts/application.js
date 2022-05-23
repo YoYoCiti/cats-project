@@ -19,4 +19,5 @@
 //= require select2
 //= require bootstrap-datepicker
 //= require datatables
+//= require echarts
 //= require_tree .
